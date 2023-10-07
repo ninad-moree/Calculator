@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:konverter/constants/colors.dart';
 
+import '../../constants/colors.dart';
 import '../services/calculator_logic.dart';
 import '../widgets/button_widget.dart';
 
