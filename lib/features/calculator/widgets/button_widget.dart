@@ -5,14 +5,14 @@ import '../../../constants/colors.dart';
 class ButtonWidget extends StatelessWidget {
   final String text;
   final Color textColor;
-  final VoidCallback onpress;
   final Color backgroundColor;
+  final Function(String) onPressedCallback;
   const ButtonWidget({
     super.key,
     required this.text,
     this.textColor = Colors.white,
-    required this.onpress,
     this.backgroundColor = buttonColor,
+    required this.onPressedCallback,
   });
 
   @override
@@ -28,7 +28,7 @@ class ButtonWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
             ),
           ),
-          onPressed: onpress,
+          onPressed: () => onPressedCallback(text),
           child: Text(
             text,
             style: TextStyle(

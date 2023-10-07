@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:konverter/constants/colors.dart';
 
+import '../services/calculator_logic.dart';
 import '../widgets/button_widget.dart';
 
 class CalculatorScreen extends StatefulWidget {
@@ -11,6 +12,25 @@ class CalculatorScreen extends StatefulWidget {
 }
 
 class _CalculatorScreenState extends State<CalculatorScreen> {
+  double firstNum = 0.0;
+  double secondNum = 0.0;
+
+  var input = "";
+  var output = "";
+
+  var operation = "";
+
+  void updateState(String newInput, String newOutput) {
+    setState(() {
+      input = newInput;
+      output = newOutput;
+    });
+  }
+
+  void handleButtonClick(String value) {
+    onButtonClick(value, input, output, updateState, context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,16 +45,16 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  const Text(
-                    "Input",
-                    style: TextStyle(
+                  Text(
+                    input,
+                    style: const TextStyle(
                       fontSize: 45,
                       color: Colors.white,
                     ),
                   ),
                   const SizedBox(height: 20),
                   Text(
-                    "Output",
+                    output,
                     style: TextStyle(
                       fontSize: 34,
                       color: Colors.white.withOpacity(0.7),
@@ -50,26 +70,26 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               ButtonWidget(
                 text: "AC",
                 textColor: orangeColor,
-                onpress: () {},
                 backgroundColor: operatorColor,
+                onPressedCallback: handleButtonClick,
               ),
               ButtonWidget(
                 text: "<",
                 textColor: orangeColor,
-                onpress: () {},
                 backgroundColor: operatorColor,
+                onPressedCallback: handleButtonClick,
               ),
               ButtonWidget(
                 text: "C",
                 textColor: orangeColor,
-                onpress: () {},
                 backgroundColor: operatorColor,
+                onPressedCallback: handleButtonClick,
               ),
               ButtonWidget(
                 text: "/",
                 textColor: orangeColor,
-                onpress: () {},
                 backgroundColor: operatorColor,
+                onPressedCallback: handleButtonClick,
               ),
             ],
           ),
@@ -77,21 +97,21 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
             children: [
               ButtonWidget(
                 text: "7",
-                onpress: () {},
+                onPressedCallback: handleButtonClick,
               ),
               ButtonWidget(
                 text: "8",
-                onpress: () {},
+                onPressedCallback: handleButtonClick,
               ),
               ButtonWidget(
                 text: "9",
-                onpress: () {},
+                onPressedCallback: handleButtonClick,
               ),
               ButtonWidget(
                 text: "x",
                 textColor: orangeColor,
-                onpress: () {},
                 backgroundColor: operatorColor,
+                onPressedCallback: handleButtonClick,
               ),
             ],
           ),
@@ -99,20 +119,20 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
             children: [
               ButtonWidget(
                 text: "4",
-                onpress: () {},
+                onPressedCallback: handleButtonClick,
               ),
               ButtonWidget(
                 text: "5",
-                onpress: () {},
+                onPressedCallback: handleButtonClick,
               ),
               ButtonWidget(
                 text: "6",
-                onpress: () {},
+                onPressedCallback: handleButtonClick,
               ),
               ButtonWidget(
                 text: "-",
+                onPressedCallback: handleButtonClick,
                 textColor: orangeColor,
-                onpress: () {},
                 backgroundColor: operatorColor,
               ),
             ],
@@ -121,20 +141,20 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
             children: [
               ButtonWidget(
                 text: "1",
-                onpress: () {},
+                onPressedCallback: handleButtonClick,
               ),
               ButtonWidget(
                 text: "2",
-                onpress: () {},
+                onPressedCallback: handleButtonClick,
               ),
               ButtonWidget(
                 text: "3",
-                onpress: () {},
+                onPressedCallback: handleButtonClick,
               ),
               ButtonWidget(
                 text: "+",
+                onPressedCallback: handleButtonClick,
                 textColor: orangeColor,
-                onpress: () {},
                 backgroundColor: operatorColor,
               ),
             ],
@@ -144,23 +164,23 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               ButtonWidget(
                 text: "%",
                 textColor: orangeColor,
-                onpress: () {},
                 backgroundColor: operatorColor,
+                onPressedCallback: handleButtonClick,
               ),
               ButtonWidget(
                 text: "0",
-                onpress: () {},
+                onPressedCallback: handleButtonClick,
               ),
               ButtonWidget(
                 text: ".",
                 textColor: orangeColor,
-                onpress: () {},
                 backgroundColor: operatorColor,
+                onPressedCallback: handleButtonClick,
               ),
               ButtonWidget(
                 text: "=",
-                onpress: () {},
                 backgroundColor: orangeColor,
+                onPressedCallback: handleButtonClick,
               ),
             ],
           ),
